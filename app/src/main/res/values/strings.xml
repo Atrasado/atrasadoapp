@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Atrasado</string>
+    <string name="signup_title">Crie sua conta</string>
+    <string name="signup_name_hint">Nome (Igual do cartão de crédito)</string>
+    <string name="signup_birthdate_hint">Data de Nascimento</string>
+    <string name="signup_document_hint">CPF</string>
+    <string name="signup_credit_card_number_hint">Número do cartão</string>
+    <string name="signup_expiration_hint">Data de expiração</string>
+    <string name="signup_email_hint">E-mail</string>
+    <string name="bt_signup">Quero ajudar</string>
 </resources>
