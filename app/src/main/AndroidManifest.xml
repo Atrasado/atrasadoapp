@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.atrasado">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".presentations.views.activities.PeopleActivity"
+            android:name=".presentations.views.activities.SplashScreenActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.FullScreen">
             <intent-filter>
@@ -22,10 +21,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentations.views.activities.SignUpActivity" />
-        <activity android:name=".presentations.views.activities.SplashScreenActivity">
-
-        </activity>
+        <activity
+            android:name=".presentations.views.activities.SignUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentations.views.activities.PeopleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentations.views.activities.JoinTeam"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

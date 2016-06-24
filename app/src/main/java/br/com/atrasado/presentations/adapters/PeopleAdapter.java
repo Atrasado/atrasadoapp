@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.atrasado.R;
@@ -22,7 +21,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder
     private List<Person> people;
     private Context context;
 
-    public PeopleAdapter(Context context, ArrayList<Person> people) {
+    public PeopleAdapter(Context context, List<Person> people) {
         this.people = people;
         this.context = context;
     }

@@ -6,7 +6,9 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import br.com.atrasado.data.network.api.PersonApi;
+import br.com.atrasado.data.network.api.TeamApi;
 import br.com.atrasado.domain.entities.Person;
+import br.com.atrasado.domain.entities.Team;
 import rx.Observable;
 
 public class Meeting {
@@ -14,9 +16,13 @@ public class Meeting {
     @Singleton
     private PersonApi personApi;
 
+    @Singleton
+    private TeamApi teamApi;
+
     @Inject
     public Meeting() {
         personApi = new PersonApi();
+        teamApi = new TeamApi();
     }
 
     public Observable<Person> join(final Person person) {
@@ -31,4 +37,7 @@ public class Meeting {
         return personApi.find(id);
     }
 
+    public Observable<List<Team>> allTeams() { return teamApi.list(); }
+
+    public Observable<Team> findTeam(Long id) { return teamApi.find(id); }
 }
