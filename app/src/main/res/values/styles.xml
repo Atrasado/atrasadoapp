@@ -21,4 +21,9 @@
         <item name="android:windowActionBarOverlay">false</item>
     </style>
 
+    <style name="PinkButton" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
 </resources>
