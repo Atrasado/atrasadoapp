@@ -2,26 +2,21 @@ package br.com.atrasado.domain.entities;
 
 import java.util.Date;
 
-/**
- * Created by caue.ferreira on 6/24/16.
- */
 public class Person {
 
     private long id;
-    private String fullName, email, document;
+    private String fullname, email, document, expirationMonth, expirationYear, creditCardNumber;
     private Date birthdate;
-    private CreditCard creditCard;
 
     public Person() {
     }
 
-    public Person(long id, String fullName, String email, String document, Date birthdate, CreditCard creditCard) {
+    public Person(long id, String fullName, String email, String document, Date birthdate) {
         this.id = id;
-        this.fullName = fullName;
+        this.fullname = fullName;
         this.email = email;
         this.document = document;
         this.birthdate = birthdate;
-        this.creditCard = creditCard;
     }
 
     public long getId() {
@@ -32,12 +27,12 @@ public class Person {
         this.id = id;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public String getEmail() {
@@ -64,23 +59,38 @@ public class Person {
         this.birthdate = birthdate;
     }
 
-    public CreditCard getCreditCard() {
-        return creditCard;
+    public String getExpirationMonth() {
+        return expirationMonth;
     }
 
-    public void setCreditCard(CreditCard creditCard) {
-        this.creditCard = creditCard;
+    public void setExpirationMonth(String expirationMonth) {
+        this.expirationMonth = expirationMonth;
+    }
+
+    public String getExpirationYear() {
+        return expirationYear;
+    }
+
+    public void setExpirationYear(String expirationYear) {
+        this.expirationYear = expirationYear;
+    }
+
+    public String getCreditCardNumber() {
+        return creditCardNumber;
+    }
+
+    public void setCreditCardNumber(String creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Person{");
         sb.append("id=").append(id);
-        sb.append(", fullName='").append(fullName).append('\'');
+        sb.append(", fullName='").append(fullname).append('\'');
         sb.append(", email='").append(email).append('\'');
         sb.append(", document='").append(document).append('\'');
         sb.append(", birthdate=").append(birthdate);
-        sb.append(", creditCard=").append(creditCard);
         sb.append('}');
         return sb.toString();
     }

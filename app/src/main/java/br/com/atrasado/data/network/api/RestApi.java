@@ -23,7 +23,7 @@ public class RestApi {
 
     public Retrofit retrofit() {
         final Gson gson = new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
+                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .registerTypeAdapter(java.util.Date.class, new DateTimeTypeAdapter())
                 .setDateFormat(API_DATETIME).create();
 

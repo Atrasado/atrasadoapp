@@ -5,8 +5,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Bundle;
 
-import br.com.atrasado
-        .R;
+import br.com.atrasado.R;
 
 public class SplashScreenActivity extends Activity {
 

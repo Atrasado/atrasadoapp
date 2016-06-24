@@ -1,11 +1,12 @@
 package br.com.atrasado.presentations.views.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.EditText;
 
 import br.com.atrasado.R;
 import br.com.atrasado.data.repository.Meeting;
-import br.com.atrasado.domain.entities.CreditCard;
 import br.com.atrasado.domain.entities.Person;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -38,8 +39,6 @@ public class SignUpActivity extends BaseActivity {
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
 
-        getApplicationComponent().inject(this);
-
         mPersonSubscriber = new Subscriber<Person>() {
             @Override
             public void onCompleted() {
@@ -48,7 +47,7 @@ public class SignUpActivity extends BaseActivity {
 
             @Override
             public void onError(Throwable e) {
-
+                errorDialog();
             }
 
             @Override
@@ -60,11 +59,25 @@ public class SignUpActivity extends BaseActivity {
 
     @OnClick(R.id.bt_signup)
     public void signup() {
+        Person person = buildPerson();
         mMeeting = getApplicationComponent().provideMeeting();
         mMeeting.join(buildPerson()).subscribe(mPersonSubscriber);
 
     }
 
+
+    private void errorDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Ops ....")
+                .setMessage("Poxa deu ruim .....")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        //
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
 
     private Person buildPerson() {
         Person person = new Person();
@@ -72,8 +85,12 @@ public class SignUpActivity extends BaseActivity {
         person.setDocument(edtCpf.getText().toString());
         person.setEmail(edtEmail.getText().toString());
 
-        CreditCard creditCard = new CreditCard();
-//        creditCard.setMonth();
+        String expirationRaw = edtExpiration.getText().toString();
+        String[] expiration = expirationRaw.split("/");
+
+        person.setExpirationMonth(expiration[0]);
+        person.setExpirationYear(expiration[1]);
+        person.setCreditCardNumber(edtCreditCard.getText().toString());
 
         return person;
     }
