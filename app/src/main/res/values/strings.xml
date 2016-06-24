@@ -8,4 +8,6 @@
     <string name="signup_expiration_hint">Data de expiração</string>
     <string name="signup_email_hint">E-mail</string>
     <string name="bt_signup">Quero ajudar</string>
+    <string name="escolha_seu_time">Escolha seu time</string>
+    <string name="team">Team</string>
 </resources>

@@ -28,4 +28,14 @@ public class Team {
     public void setSlug(String slug) {
         this.slug = slug;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Team{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", slug='").append(slug).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

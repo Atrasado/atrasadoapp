@@ -1,11 +1,11 @@
 package br.com.atrasado.presentations.views.activities;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.EditText;
 
 import br.com.atrasado.R;
+import br.com.atrasado.data.internal.AtrasadosPreferences;
+import br.com.atrasado.data.network.Actions;
 import br.com.atrasado.data.repository.Meeting;
 import br.com.atrasado.domain.entities.Person;
 import butterknife.Bind;
@@ -39,6 +39,10 @@ public class SignUpActivity extends BaseActivity {
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
 
+        if (AtrasadosPreferences.getInstance().isLogged()) {
+            Actions.to(this, JoinTeam.class, true);
+        }
+
         mPersonSubscriber = new Subscriber<Person>() {
             @Override
             public void onCompleted() {
@@ -52,9 +56,15 @@ public class SignUpActivity extends BaseActivity {
 
             @Override
             public void onNext(Person person) {
-
+                toTeam();
             }
+
         };
+    }
+
+
+    private void toTeam() {
+        Actions.to(this, JoinTeam.class, true);
     }
 
     @OnClick(R.id.bt_signup)
@@ -62,21 +72,6 @@ public class SignUpActivity extends BaseActivity {
         Person person = buildPerson();
         mMeeting = getApplicationComponent().provideMeeting();
         mMeeting.join(buildPerson()).subscribe(mPersonSubscriber);
-
-    }
-
-
-    private void errorDialog() {
-        new AlertDialog.Builder(this)
-                .setTitle("Ops ....")
-                .setMessage("Poxa deu ruim .....")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        //
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
     }
 
     private Person buildPerson() {

@@ -70,4 +70,8 @@ public class AtrasadosPreferences {
         editor.clear();
         editor.commit();
     }
+
+    public boolean isLogged() {
+        return prefs.contains(PERSON);
+    }
 }
