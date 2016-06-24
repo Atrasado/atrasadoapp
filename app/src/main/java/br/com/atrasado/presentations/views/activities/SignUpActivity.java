@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 
 import br.com.atrasado.atrasado.R;
+import br.com.atrasado.domain.entities.People;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -24,5 +25,16 @@ public class SignUpActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
+
+        People person = buildPerson();
+    }
+
+    private People buildPerson() {
+        People person = new People();
+        person.setFullName(edtSignUpName.getText().toString());
+        person.setDocument(edtCpf.getText().toString());
+        person.setEmail(edtEmail.getText().toString());
+
+        return  person;
     }
 }
