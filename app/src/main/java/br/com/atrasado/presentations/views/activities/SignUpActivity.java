@@ -35,7 +35,6 @@ public class SignUpActivity extends BaseActivity {
 
         Person person = buildPerson();
 
-        getApplicationComponent().inject(this);
         mMeeting = getApplicationComponent().provideMeeting();
     }
 

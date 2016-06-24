@@ -12,6 +12,13 @@ public class AndroidApplication extends Application {
     public void onCreate() {
         super.onCreate();
         AtrasadosPreferences.setInstance(this);
+        initializeInjector();
+    }
+
+    public void initializeInjector() {
+        this.applicationComponent = DaggerApplicationComponent.builder()
+                .applicationModule(new ApplicationModule(this))
+                .build();
     }
 
     public ApplicationComponent getApplicationComponent() {
