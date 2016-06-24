@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestApi {
     public static final String API_DATETIME = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
-    final String BASE_URL = "http://atrasado.com.br/";
+    final String BASE_URL = "http://atrasado.herokuapp.com/";
 
     private final OkHttpClient mClient = new OkHttpClient.Builder().
             readTimeout(30, TimeUnit.SECONDS).

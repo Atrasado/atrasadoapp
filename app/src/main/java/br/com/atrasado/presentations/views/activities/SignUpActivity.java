@@ -5,9 +5,12 @@ import android.widget.EditText;
 
 import br.com.atrasado.atrasado.R;
 import br.com.atrasado.data.repository.Meeting;
+import br.com.atrasado.domain.entities.CreditCard;
 import br.com.atrasado.domain.entities.Person;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import rx.Subscriber;
 
 public class SignUpActivity extends BaseActivity {
 
@@ -27,23 +30,50 @@ public class SignUpActivity extends BaseActivity {
 
     private Meeting mMeeting;
 
+    private Subscriber<Person> mPersonSubscriber;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
 
-        Person person = buildPerson();
-
         getApplicationComponent().inject(this);
-        mMeeting = getApplicationComponent().provideMeeting();
+
+        mPersonSubscriber = new Subscriber<Person>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(Person person) {
+
+            }
+        };
     }
+
+    @OnClick(R.id.bt_signup)
+    public void signup() {
+        mMeeting = getApplicationComponent().provideMeeting();
+        mMeeting.join(buildPerson()).subscribe(mPersonSubscriber);
+
+    }
+
 
     private Person buildPerson() {
         Person person = new Person();
         person.setFullName(edtSignUpName.getText().toString());
         person.setDocument(edtCpf.getText().toString());
         person.setEmail(edtEmail.getText().toString());
+
+        CreditCard creditCard = new CreditCard();
+//        creditCard.setMonth();
 
         return person;
     }
