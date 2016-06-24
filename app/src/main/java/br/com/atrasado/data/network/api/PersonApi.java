@@ -93,4 +93,27 @@ public class PersonApi extends RestApi {
             });
         });
     }
+
+    public Observable<Person> donate(final long id) {
+        return Observable.create(subscriber -> {
+
+            Call<Person> authorizationCall = personService.donate(id);
+
+            authorizationCall.enqueue(new Callback<Person>() {
+                @Override
+                public void onResponse(Call<Person> call, Response<Person> response) {
+                    if (response.isSuccess()) {
+                        subscriber.onNext(response.body());
+                        subscriber.onCompleted();
+                    } else
+                        subscriber.onError(null);
+                }
+
+                @Override
+                public void onFailure(Call<Person> call, Throwable t) {
+                    subscriber.onError(t);
+                }
+            });
+        });
+    }
 }

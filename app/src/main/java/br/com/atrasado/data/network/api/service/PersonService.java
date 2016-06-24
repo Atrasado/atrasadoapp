@@ -14,8 +14,14 @@ public interface PersonService {
 
     @POST(BASE_URL + ".json")
     Call<Person> join(@Body Person person);
+
     @GET(BASE_URL + ".json")
     Call<List<Person>> list();
+
     @GET(BASE_URL + "/{id}")
     Call<Person> find(@Path("id") long id);
+
+    @GET(BASE_URL + "/{id}/donate.json")
+    Call<Person> donate(@Path("id") long id);
+
 }

@@ -25,6 +25,8 @@ public class Meeting {
         teamApi = new TeamApi();
     }
 
+    public Observable<Person> donate(Long id) { return personApi.donate(id); }
+
     public Observable<Person> join(final Person person) {
         return personApi.login(person);
     }
