@@ -6,34 +6,32 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import br.com.atrasado.data.internal.AtrasadosPreferences;
-import br.com.atrasado.data.network.api.service.PeopleService;
-import br.com.atrasado.domain.entities.People;
+import br.com.atrasado.data.network.api.service.PersonService;
+import br.com.atrasado.domain.entities.Person;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import rx.Observable;
 
-import static android.R.attr.id;
-
-public class PeopleApi extends RestApi {
+public class PersonApi extends RestApi {
 
     @Singleton
-    private PeopleService peopleService;
+    private PersonService personService;
 
     @Inject
-    public PeopleApi() {
-        peopleService = retrofit().create(PeopleService.class);
+    public PersonApi() {
+        personService = retrofit().create(PersonService.class);
     }
 
 
-    public Observable<People> login(final People people) {
+    public Observable<Person> login(final Person person) {
         return Observable.create(subscriber -> {
 
-            Call<People> authorizationCall = peopleService.join(people);
+            Call<Person> authorizationCall = personService.join(person);
 
-            authorizationCall.enqueue(new Callback<People>() {
+            authorizationCall.enqueue(new Callback<Person>() {
                 @Override
-                public void onResponse(Call<People> call, Response<People> response) {
+                public void onResponse(Call<Person> call, Response<Person> response) {
                     if (response.isSuccess()) {
                         subscriber.onNext(response.body());
                         AtrasadosPreferences.getInstance().saveMe(response.body());
@@ -43,21 +41,21 @@ public class PeopleApi extends RestApi {
                 }
 
                 @Override
-                public void onFailure(Call<People> call, Throwable t) {
+                public void onFailure(Call<Person> call, Throwable t) {
                     subscriber.onError(t);
                 }
             });
         });
     }
 
-    public Observable<List<People>> list() {
+    public Observable<List<Person>> list() {
         return Observable.create(subscriber -> {
 
-            Call<List<People>> authorizationCall = peopleService.list();
+            Call<List<Person>> authorizationCall = personService.list();
 
-            authorizationCall.enqueue(new Callback<List<People>>() {
+            authorizationCall.enqueue(new Callback<List<Person>>() {
                 @Override
-                public void onResponse(Call<List<People>> call, Response<List<People>> response) {
+                public void onResponse(Call<List<Person>> call, Response<List<Person>> response) {
                     if (response.isSuccess()) {
                         subscriber.onNext(response.body());
                         subscriber.onCompleted();
@@ -66,21 +64,21 @@ public class PeopleApi extends RestApi {
                 }
 
                 @Override
-                public void onFailure(Call<List<People>> call, Throwable t) {
+                public void onFailure(Call<List<Person>> call, Throwable t) {
                     subscriber.onError(t);
                 }
             });
         });
     }
 
-    public Observable<People> find(final long id) {
+    public Observable<Person> find(final long id) {
         return Observable.create(subscriber -> {
 
-            Call<People> authorizationCall = peopleService.find(id);
+            Call<Person> authorizationCall = personService.find(id);
 
-            authorizationCall.enqueue(new Callback<People>() {
+            authorizationCall.enqueue(new Callback<Person>() {
                 @Override
-                public void onResponse(Call<People> call, Response<People> response) {
+                public void onResponse(Call<Person> call, Response<Person> response) {
                     if (response.isSuccess()) {
                         subscriber.onNext(response.body());
                         subscriber.onCompleted();
@@ -89,7 +87,7 @@ public class PeopleApi extends RestApi {
                 }
 
                 @Override
-                public void onFailure(Call<People> call, Throwable t) {
+                public void onFailure(Call<Person> call, Throwable t) {
                     subscriber.onError(t);
                 }
             });

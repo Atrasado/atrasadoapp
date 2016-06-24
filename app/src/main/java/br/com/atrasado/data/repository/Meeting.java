@@ -5,30 +5,30 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import br.com.atrasado.data.network.api.PeopleApi;
-import br.com.atrasado.domain.entities.People;
+import br.com.atrasado.data.network.api.PersonApi;
+import br.com.atrasado.domain.entities.Person;
 import rx.Observable;
 
 public class Meeting {
 
     @Singleton
-    private PeopleApi peopleApi;
+    private PersonApi personApi;
 
     @Inject
     public Meeting() {
-        peopleApi = new PeopleApi();
+        personApi = new PersonApi();
     }
 
-    public Observable<People> join(final People people) {
-        return peopleApi.login(people);
+    public Observable<Person> join(final Person person) {
+        return personApi.login(person);
     }
 
-    public Observable<List<People>> list() {
-        return peopleApi.list();
+    public Observable<List<Person>> list() {
+        return personApi.list();
     }
 
-    public Observable<People> find(final long id) {
-        return peopleApi.find(id);
+    public Observable<Person> find(final long id) {
+        return personApi.find(id);
     }
 
 }

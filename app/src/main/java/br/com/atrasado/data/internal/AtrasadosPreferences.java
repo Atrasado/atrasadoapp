@@ -7,7 +7,7 @@ import com.google.gson.Gson;
 
 import java.util.Map;
 
-import br.com.atrasado.domain.entities.People;
+import br.com.atrasado.domain.entities.Person;
 
 public class AtrasadosPreferences {
 
@@ -16,7 +16,7 @@ public class AtrasadosPreferences {
     private SharedPreferences.Editor editor;
 
     private static final String APP = "atrasados";
-    private static final String PEOPLE = "people";
+    private static final String PERSON = "person";
     private static final String WELCOME = "welcome";
 
     private static AtrasadosPreferences atrasadosPreferences;
@@ -52,14 +52,14 @@ public class AtrasadosPreferences {
         return editor.commit();
     }
 
-    public boolean saveMe(final People people) {
+    public boolean saveMe(final Person person) {
         saveOldPreferences();
-        editor.putString(PEOPLE, new Gson().toJson(people));
+        editor.putString(PERSON, new Gson().toJson(person));
         return editor.commit();
     }
 
-    public People me(){
-        return new Gson().fromJson(prefs.getString(PEOPLE, null),People.class);
+    public Person me(){
+        return new Gson().fromJson(prefs.getString(PERSON, null),Person.class);
     }
 
     public boolean shouldSkipWelcome() {

@@ -2,20 +2,20 @@ package br.com.atrasado.data.network.api.service;
 
 import java.util.List;
 
-import br.com.atrasado.domain.entities.People;
+import br.com.atrasado.domain.entities.Person;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
-public interface PeopleService {
+public interface PersonService {
     String BASE_URL = "people/";
 
     @POST(BASE_URL)
-    Call<People> join(@Body People people);
+    Call<Person> join(@Body Person person);
     @GET(BASE_URL)
-    Call<List<People>> list();
+    Call<List<Person>> list();
     @GET(BASE_URL + "{id}")
-    Call<People> find(@Path("id") long id);
+    Call<Person> find(@Path("id") long id);
 }

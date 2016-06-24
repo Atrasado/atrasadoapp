@@ -1,22 +1,26 @@
 package br.com.atrasado.domain.entities;
 
+import java.util.Date;
+
 /**
  * Created by caue.ferreira on 6/24/16.
  */
-public class People {
+public class Person {
 
     private long id;
     private String fullName, email, document;
+    private Date birthdate;
     private CreditCard creditCard;
 
-    public People() {
+    public Person() {
     }
 
-    public People(long id, String fullName, String email, String document, CreditCard creditCard) {
+    public Person(long id, String fullName, String email, String document, Date birthdate, CreditCard creditCard) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.document = document;
+        this.birthdate = birthdate;
         this.creditCard = creditCard;
     }
 
@@ -52,6 +56,14 @@ public class People {
         this.document = document;
     }
 
+    public Date getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
+    }
+
     public CreditCard getCreditCard() {
         return creditCard;
     }
@@ -62,11 +74,12 @@ public class People {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("People{");
+        final StringBuilder sb = new StringBuilder("Person{");
         sb.append("id=").append(id);
         sb.append(", fullName='").append(fullName).append('\'');
         sb.append(", email='").append(email).append('\'');
         sb.append(", document='").append(document).append('\'');
+        sb.append(", birthdate=").append(birthdate);
         sb.append(", creditCard=").append(creditCard);
         sb.append('}');
         return sb.toString();
