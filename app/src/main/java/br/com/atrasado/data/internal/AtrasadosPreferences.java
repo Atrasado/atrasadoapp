@@ -39,6 +39,10 @@ public class AtrasadosPreferences {
         return atrasadosPreferences;
     }
 
+    public boolean isLogged() {
+        return prefs.contains(PERSON);
+    }
+
     public void saveOldPreferences() {
         Map<String, ?> allEntries = prefs.getAll();
         for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
@@ -58,8 +62,8 @@ public class AtrasadosPreferences {
         return editor.commit();
     }
 
-    public Person me(){
-        return new Gson().fromJson(prefs.getString(PERSON, null),Person.class);
+    public Person me() {
+        return new Gson().fromJson(prefs.getString(PERSON, null), Person.class);
     }
 
     public boolean shouldSkipWelcome() {

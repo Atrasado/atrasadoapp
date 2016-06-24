@@ -21,9 +21,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentations.views.activities.SignUpActivity" />
-        <activity android:name=".presentations.views.activities.JoinTeam" />
-        <activity android:name=".presentations.views.activities.DonateActivity"></activity>
+        <activity
+            android:name=".presentations.views.activities.SignUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentations.views.activities.JoinTeam"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentations.views.activities.DonateActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".presentations.views.activities.SuccessActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

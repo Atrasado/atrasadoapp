@@ -1,11 +1,11 @@
 package br.com.atrasado.presentations.views.activities;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.EditText;
 
 import br.com.atrasado.R;
+import br.com.atrasado.data.internal.AtrasadosPreferences;
+import br.com.atrasado.data.network.Action;
 import br.com.atrasado.data.repository.Meeting;
 import br.com.atrasado.domain.entities.Person;
 import butterknife.Bind;
@@ -39,10 +39,16 @@ public class SignUpActivity extends BaseActivity {
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
 
+
+        if (AtrasadosPreferences.getInstance().isLogged()) {
+            success();
+            return;
+        }
+
         mPersonSubscriber = new Subscriber<Person>() {
             @Override
             public void onCompleted() {
-
+                success();
             }
 
             @Override
@@ -65,7 +71,9 @@ public class SignUpActivity extends BaseActivity {
 
     }
 
-
+    private void success() {
+        Action.to(this, DonateActivity.class, true);
+    }
 
     private Person buildPerson() {
         Person person = new Person();

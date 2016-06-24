@@ -5,6 +5,7 @@ import android.widget.Button;
 
 import br.com.atrasado.R;
 import br.com.atrasado.data.internal.AtrasadosPreferences;
+import br.com.atrasado.data.network.Action;
 import br.com.atrasado.data.repository.Meeting;
 import br.com.atrasado.domain.entities.Person;
 import butterknife.Bind;
@@ -29,12 +30,12 @@ public class DonateActivity extends BaseActivity {
 
         ButterKnife.bind(this);
         mMeeting = getApplicationComponent().provideMeeting();
-        
+
 
         mDonateSubscriber = new Subscriber<Person>() {
             @Override
             public void onCompleted() {
-
+                success();
             }
 
             @Override
@@ -50,12 +51,18 @@ public class DonateActivity extends BaseActivity {
     }
 
     @OnClick(R.id.nope)
-    public void nope(){
+    public void nope() {
         finish();
     }
 
     @OnClick(R.id.donate)
-    public void donate(){
+    public void donate() {
         mMeeting.donate(AtrasadosPreferences.getInstance().me().getId()).subscribe(mDonateSubscriber);
     }
+
+
+    private void success() {
+        Action.to(this, SuccessActivity.class, true);
+    }
+
 }
