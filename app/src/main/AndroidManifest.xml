@@ -21,8 +21,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="br.com.atrasado.presentations.views.activities.WelcomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".presentations.views.activities.SignUpActivity" />
-        <activity android:name=".presentations.views.activities.JoinTeam"></activity>
+        <activity android:name=".presentations.views.activities.JoinTeam" />
+        <activity android:name=".presentations.views.activities.WelcomeActivity"></activity>
     </application>
 
 </manifest>
