@@ -16,6 +16,6 @@ public interface PeopleService {
     Call<People> join(@Body People people);
     @GET(BASE_URL)
     Call<List<People>> list();
-    @GET(BASE_URL + "{people}")
-    Call<List<People>> get(@Path("people") long people);
+    @GET(BASE_URL + "{id}")
+    Call<People> find(@Path("id") long id);
 }
