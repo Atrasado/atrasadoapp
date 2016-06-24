@@ -8,4 +8,23 @@
     <string name="signup_expiration_hint">Data de expiração</string>
     <string name="signup_email_hint">E-mail</string>
     <string name="bt_signup">Quero ajudar</string>
+
+
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">O atraso:</string>
+    <string name="slide_1_desc">Não adianta mais correr, você já está atrasado para a reunião com sua equipe.</string>
+
+    <string name="slide_2_title">A delação:</string>
+    <string name="slide_2_desc">Sua equipe irá marcar a sua falta no aplicativo, e você será avisado.</string>
+
+    <string name="slide_3_title">A boa causa:</string>
+    <string name="slide_3_desc">Para compensar o seu atraso, você fará uma pequena doação a uma dessas instituições de caridade.</string>
+
+    <string name="slide_4_title">O resultado:</string>
+    <string name="slide_4_desc">Além de se redimir com seu time pela sua falha, você ajudará a quem mais precisa!</string>
+
 </resources>
