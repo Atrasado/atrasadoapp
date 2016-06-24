@@ -66,18 +66,6 @@ public class SignUpActivity extends BaseActivity {
     }
 
 
-    private void errorDialog() {
-        new AlertDialog.Builder(this)
-                .setTitle("Ops ....")
-                .setMessage("Poxa deu ruim .....")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        //
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
-    }
 
     private Person buildPerson() {
         Person person = new Person();

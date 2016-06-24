@@ -27,8 +27,13 @@
     </style>
 
 
-
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="WhiteButton">
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
 
 </resources>
