@@ -21,7 +21,7 @@ public interface PersonService {
     @GET(BASE_URL + "/{id}")
     Call<Person> find(@Path("id") long id);
 
-    @GET(BASE_URL + "/{id}/donate.json")
+    @POST(BASE_URL + "/{id}/donate.json")
     Call<Person> donate(@Path("id") long id);
 
 }
