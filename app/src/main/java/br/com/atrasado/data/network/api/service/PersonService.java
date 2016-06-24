@@ -10,12 +10,12 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface PersonService {
-    String BASE_URL = "people/";
+    String BASE_URL = "people";
 
-    @POST(BASE_URL)
+    @POST(BASE_URL + ".json")
     Call<Person> join(@Body Person person);
-    @GET(BASE_URL)
+    @GET(BASE_URL + ".json")
     Call<List<Person>> list();
-    @GET(BASE_URL + "{id}")
+    @GET(BASE_URL + "/{id}")
     Call<Person> find(@Path("id") long id);
 }

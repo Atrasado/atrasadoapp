@@ -27,9 +27,9 @@ public class PersonApi extends RestApi {
     public Observable<Person> login(final Person person) {
         return Observable.create(subscriber -> {
 
-            Call<Person> authorizationCall = personService.join(person);
+            Call<Person> personCall = personService.join(person);
 
-            authorizationCall.enqueue(new Callback<Person>() {
+            personCall.enqueue(new Callback<Person>() {
                 @Override
                 public void onResponse(Call<Person> call, Response<Person> response) {
                     if (response.isSuccess()) {
@@ -51,9 +51,9 @@ public class PersonApi extends RestApi {
     public Observable<List<Person>> list() {
         return Observable.create(subscriber -> {
 
-            Call<List<Person>> authorizationCall = personService.list();
+            Call<List<Person>> personCall = personService.list();
 
-            authorizationCall.enqueue(new Callback<List<Person>>() {
+            personCall.enqueue(new Callback<List<Person>>() {
                 @Override
                 public void onResponse(Call<List<Person>> call, Response<List<Person>> response) {
                     if (response.isSuccess()) {
@@ -74,9 +74,9 @@ public class PersonApi extends RestApi {
     public Observable<Person> find(final long id) {
         return Observable.create(subscriber -> {
 
-            Call<Person> authorizationCall = personService.find(id);
+            Call<Person> personCall = personService.find(id);
 
-            authorizationCall.enqueue(new Callback<Person>() {
+            personCall.enqueue(new Callback<Person>() {
                 @Override
                 public void onResponse(Call<Person> call, Response<Person> response) {
                     if (response.isSuccess()) {

@@ -35,8 +35,11 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(PeopleAdapter.ViewHolder viewHolder, int i) {
-        viewHolder.txtFullName.setText(people.get(i).getFullName());
-        Picasso.with(context).load(people.get(i).getEmail()).into(viewHolder.imgPhoto);
+        viewHolder.txtFullName.setText(people.get(i).getFullname());
+        Picasso.with(context).load(people.get(i).getEmail())
+                .placeholder(context.getResources().getDrawable(R.drawable.ic_person))
+                .error(context.getResources().getDrawable(R.drawable.ic_person))
+                .into(viewHolder.imgPhoto);
     }
 
     @Override
@@ -55,5 +58,4 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder
             ButterKnife.bind(this, view);
         }
     }
-
 }

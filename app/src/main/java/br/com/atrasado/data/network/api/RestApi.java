@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestApi {
     public static final String API_DATETIME = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
-    final String BASE_URL = "http://atrasado.com.br/";
+    final String BASE_URL = "http://atrasado.herokuapp.com/";
 
     private final OkHttpClient mClient = new OkHttpClient.Builder().
             readTimeout(30, TimeUnit.SECONDS).
@@ -23,7 +23,7 @@ public class RestApi {
 
     public Retrofit retrofit() {
         final Gson gson = new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
+                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .registerTypeAdapter(java.util.Date.class, new DateTimeTypeAdapter())
                 .setDateFormat(API_DATETIME).create();
 
