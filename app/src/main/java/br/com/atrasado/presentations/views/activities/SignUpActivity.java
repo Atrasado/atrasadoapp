@@ -81,7 +81,7 @@ public class SignUpActivity extends BaseActivity {
 
     private Person buildPerson() {
         Person person = new Person();
-        person.setFullName(edtSignUpName.getText().toString());
+        person.setFullname(edtSignUpName.getText().toString());
         person.setDocument(edtCpf.getText().toString());
         person.setEmail(edtEmail.getText().toString());
 
