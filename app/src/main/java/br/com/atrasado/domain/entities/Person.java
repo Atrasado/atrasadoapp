@@ -15,6 +15,8 @@ public class Person {
     public Person() {
     }
 
+
+
     public Person(long id, String fullName, String email, String document, Date birthdate, CreditCard creditCard) {
         this.id = id;
         this.fullName = fullName;
