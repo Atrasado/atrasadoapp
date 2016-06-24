@@ -3,7 +3,7 @@ package br.com.atrasado.presentations.views.activities;
 import android.os.Bundle;
 import android.widget.EditText;
 
-import br.com.atrasado.atrasado.R;
+import br.com.atrasado.R;
 import br.com.atrasado.data.repository.Meeting;
 import br.com.atrasado.domain.entities.CreditCard;
 import br.com.atrasado.domain.entities.Person;
